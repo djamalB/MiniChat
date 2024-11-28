@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import classnames from "classnames";
 import { IPost } from "../Post/IPost";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { RootState, useStoreDispatch } from "../../redux/store";
 import styles from "./Post.module.css";
+import { deletePost } from "../../redux/posts";
 
 interface IPostProps {
   post: IPost;
@@ -13,6 +14,18 @@ export const Post: FC<IPostProps> = ({ post }) => {
   const users = useSelector((state: RootState) => state.users.list);
   const currentUser = useSelector((state: RootState) => state.users.current);
   const user = users.find(({ id }) => id === post.authorId);
+  const dispatch = useStoreDispatch();
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
+  const openModalClick = () => {
+    if (currentUser.id === post.authorId) {
+      setOpenModal((prev) => !prev);
+    }
+  };
+
+  const handleDelete = () => {
+    dispatch(deletePost(post.id));
+  };
 
   return (
     <li
@@ -20,7 +33,7 @@ export const Post: FC<IPostProps> = ({ post }) => {
         [styles.currentUsersPost]: post.authorId === currentUser.id,
       })}
     >
-      <button className={styles.btn_img}>
+      <button className={styles.btn_img} onClick={openModalClick}>
         <img className={styles.image} src={user?.avatar} alt="author" />
       </button>
       <div className={styles.chat}>
@@ -33,6 +46,12 @@ export const Post: FC<IPostProps> = ({ post }) => {
           {post.text}
         </span>
       </div>
+      {openModal && (
+        <div>
+          <button onClick={handleDelete}>Удалить</button>
+          <button>Изменить</button>
+        </div>
+      )}
     </li>
   );
 };
