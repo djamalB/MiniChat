@@ -20,8 +20,11 @@ export const Post: FC<IPostProps> = ({ post }) => {
         [styles.currentUsersPost]: post.authorId === currentUser.id,
       })}
     >
-      <img className={styles.image} src={user?.avatar} alt="author" />
-      <p>
+      <button className={styles.btn_img}>
+        <img className={styles.image} src={user?.avatar} alt="author" />
+      </button>
+      <div className={styles.chat}>
+        <span className={styles.name}>{user?.name}</span>
         <span
           className={classnames(styles.text, {
             [styles.currentUsersPostText]: post.authorId === currentUser.id,
@@ -29,7 +32,7 @@ export const Post: FC<IPostProps> = ({ post }) => {
         >
           {post.text}
         </span>
-      </p>
+      </div>
     </li>
   );
 };
