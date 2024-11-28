@@ -14,6 +14,18 @@ export const AddPost: FC<IAddPostProps> = ({ className }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state: RootState) => state.users.current);
 
+  const addPostUser = () => {
+    if (text) {
+      dispatch(
+        addPost({
+          text,
+          authorId: currentUser.id,
+        })
+      );
+      textChange("");
+    }
+  };
+
   return (
     <div className={classnames(styles.addPost, className)}>
       <img className={styles.avatar} src={currentUser.avatar} alt="author" />
@@ -25,21 +37,8 @@ export const AddPost: FC<IAddPostProps> = ({ className }) => {
           onChange={({ target }) => textChange(target.value)}
         />
 
-        <button
-          className={styles.sendButton}
-          onClick={() => {
-            if (text) {
-              dispatch(
-                addPost({
-                  text,
-                  authorId: currentUser.id,
-                })
-              );
-              textChange("");
-            }
-          }}
-        >
-          <FaTelegramPlane color="white" size={25}/>
+        <button className={styles.sendButton} onClick={addPostUser}>
+          <FaTelegramPlane color="white" size={25} />
         </button>
       </div>
     </div>
