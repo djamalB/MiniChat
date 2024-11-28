@@ -6,7 +6,7 @@
 .rightColumn {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
 }
 
 .postsList {
@@ -14,5 +14,5 @@
 }
 
 .usersList {
-  width: 30%;
+  width: 20%;
 }

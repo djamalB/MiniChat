@@ -3,9 +3,8 @@ import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./AddPost.module.css";
 import { RootState } from "../../redux/store";
-import SendIcon from "./assets/send.svg";
 import { addPost } from "../../redux/posts";
-
+import { FaTelegramPlane } from "react-icons/fa";
 interface IAddPostProps {
   className?: string;
 }
@@ -21,9 +20,11 @@ export const AddPost: FC<IAddPostProps> = ({ className }) => {
       <div className={styles.form}>
         <input
           className={styles.input}
+          placeholder="Сообщение..."
           value={text}
           onChange={({ target }) => textChange(target.value)}
         />
+
         <button
           className={styles.sendButton}
           onClick={() => {
@@ -38,7 +39,7 @@ export const AddPost: FC<IAddPostProps> = ({ className }) => {
             }
           }}
         >
-          <img src={SendIcon} alt="SendIcon" />
+          <FaTelegramPlane color="white" size={25}/>
         </button>
       </div>
     </div>

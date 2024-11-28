@@ -3,25 +3,25 @@
     {
       "id": 1,
       "date": "12:33 27.01.2023",
-      "text": "Hello guys",
+      "text": "",
       "authorId": 1
     },
     {
       "id": 2,
       "date": "12:45 27.01.2023",
-      "text": "Hello, Dima",
+      "text": "",
       "authorId": 2
     },
     {
       "id": 3,
       "date": "12:45 27.01.2023",
-      "text": "Привет. Как настроение у Вас, господа?",
+      "text": "",
       "authorId": 3
     },
     {
       "id": 4,
       "date": "12:45 27.01.2023",
-      "text": "А у Вас?",
+      "text": "",
       "authorId": 3
     }
   ],
