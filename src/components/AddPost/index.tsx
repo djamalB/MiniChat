@@ -1,27 +1,28 @@
 import { FC, useState } from "react";
 import classnames from "classnames";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styles from "./AddPost.module.css";
-import { RootState } from "../../redux/store";
-import { addPost } from "../../redux/posts";
+import { RootState, useStoreDispatch } from "../../redux/store";
+import { addPost, savePost } from "../../redux/posts";
 import { FaTelegramPlane } from "react-icons/fa";
+import { IPost } from "../Post/IPost";
 interface IAddPostProps {
   className?: string;
 }
 
 export const AddPost: FC<IAddPostProps> = ({ className }) => {
   const [text, textChange] = useState<string>("");
-  const dispatch = useDispatch();
+  const dispatch = useStoreDispatch();
   const currentUser = useSelector((state: RootState) => state.users.current);
 
-  const addPostUser = () => {
+  const addPostUser = async () => {
     if (text) {
-      dispatch(
-        addPost({
-          text,
-          authorId: currentUser.id,
-        })
-      );
+      const newPost = {
+        text,
+        authorId: currentUser.id,
+        date: new Date(),
+      };
+      await dispatch(savePost(newPost));
       textChange("");
     }
   };

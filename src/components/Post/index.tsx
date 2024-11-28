@@ -4,7 +4,7 @@ import { IPost } from "../Post/IPost";
 import { useSelector } from "react-redux";
 import { RootState, useStoreDispatch } from "../../redux/store";
 import styles from "./Post.module.css";
-import { deletePost } from "../../redux/posts";
+import { deletePost, savePost } from "../../redux/posts";
 
 interface IPostProps {
   post: IPost;
