@@ -1,8 +1,10 @@
 .postsList {
-    background-color: cadetblue;
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  /* background-color: #2a3655; */
+  /* background-color: rgb(34, 47, 61); */
+  background-color: #1a222c;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

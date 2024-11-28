@@ -1,8 +1,11 @@
 .userList {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-    border-right: 1px solid lightgray;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  border-right: 1px solid lightgray;
+  height: 100%;
+  background-color: #1a222c;
+  border-right: 1px solid #34424f;
 }

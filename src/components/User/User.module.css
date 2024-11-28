@@ -1,20 +1,22 @@
 .user {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 10px;
-    padding: 5px 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  color: white;
+  margin-top: 30px;
 }
 
 .user:hover {
-    background-color: lightgrey;
-    cursor: pointer;
+  background-color: #486993;
+  cursor: pointer;
 }
 
 .avatar {
-    width: 30px;
-    height: 30px;
-    padding: 10px;
-    border-radius: 50%;
-    background-color: white;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: white;
 }
