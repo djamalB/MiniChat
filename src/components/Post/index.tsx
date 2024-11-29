@@ -1,10 +1,10 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import classnames from "classnames";
 import { IPost } from "../Post/IPost";
 import { useSelector } from "react-redux";
 import { RootState, useStoreDispatch } from "../../redux/store";
 import styles from "./Post.module.css";
-import { deletePost } from "../../redux/posts";
+import { removePost } from "../../redux/posts";
 
 interface IPostProps {
   post: IPost;
@@ -23,8 +23,12 @@ export const Post: FC<IPostProps> = ({ post }) => {
     }
   };
 
+  useEffect(() => {
+    setOpenModal(false);
+  }, [currentUser.id, post.id]);
+
   const handleDelete = () => {
-    dispatch(deletePost(post.id));
+    dispatch(removePost(post.id));
   };
 
   return (
