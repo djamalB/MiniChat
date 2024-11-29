@@ -1,28 +1,28 @@
 {
   "posts": [
     {
-      "id": 1,
-      "date": "12:33 27.01.2023",
-      "text": "Привет семья!",
-      "authorId": 1
-    },
-    {
-      "id": 2,
-      "date": "12:45 27.01.2023",
-      "text": "Привет Папа!",
-      "authorId": 2
-    },
-    {
-      "id": 3,
-      "date": "12:45 27.01.2023",
-      "text": "Привет Папа!",
-      "authorId": 3
-    },
-    {
-      "text": "dnclkdnlkv",
-      "authorId": 1,
-      "date": "2024-11-28T19:45:16.840Z",
+      "text": "lsfkmgslk",
+      "authorId": 2,
+      "date": "2024-11-29T14:38:08.854Z",
       "id": 4
+    },
+    {
+      "text": "eeeeee",
+      "authorId": 3,
+      "date": "2024-11-29T14:39:25.583Z",
+      "id": 5
+    },
+    {
+      "text": "sdkdjd",
+      "authorId": 1,
+      "date": "2024-11-29T15:18:58.924Z",
+      "id": 8
+    },
+    {
+      "text": "sjdnsjd",
+      "authorId": 1,
+      "date": "2024-11-29T15:19:18.025Z",
+      "id": 9
     }
   ],
   "users": [
