@@ -5,12 +5,13 @@ import axios from "axios";
 
 interface IPostState {
   list: Array<IPost>;
+  editText: string;
 }
 
 const initialState: IPostState = {
   list: [],
+  editText: "",
 };
-
 export const getPosts = createAsyncThunk("getPosts", async () => {
   const response = await getPostsApi();
 
@@ -26,6 +27,16 @@ export const savePost = createAsyncThunk(
     } catch (error) {
       console.log(error);
     }
+  }
+);
+
+export const updatePost = createAsyncThunk(
+  "updatePost",
+  async ({ id, text }: { id: number; text: string }) => {
+    await axios.patch(`http://localhost:8001/posts/${id}`, {
+      text,
+    });
+    return { id, text };
   }
 );
 
@@ -51,6 +62,14 @@ const counterSlice = createSlice({
     });
     builder.addCase(removePost.fulfilled, (state, action) => {
       state.list = state.list.filter((post) => post.id !== action.payload);
+    });
+    builder.addCase(updatePost.fulfilled, (state, action) => {
+      const postToUpdate = state.list.find(
+        (post) => post.id === action.payload.id
+      );
+      if (postToUpdate) {
+        postToUpdate.text = action.payload.text;
+      }
     });
   },
 });

@@ -5,12 +5,15 @@ import { useSelector } from "react-redux";
 import { RootState, useStoreDispatch } from "../../redux/store";
 import styles from "./Post.module.css";
 import { removePost } from "../../redux/posts";
+import { IAddPostRef } from "../AddPost";
 
 interface IPostProps {
   post: IPost;
+  addPostRef: React.RefObject<IAddPostRef>;
+  setEditPostId: (id: number | null) => void;
 }
 
-export const Post: FC<IPostProps> = ({ post }) => {
+export const Post: FC<IPostProps> = ({ post, addPostRef, setEditPostId }) => {
   const users = useSelector((state: RootState) => state.users.list);
   const currentUser = useSelector((state: RootState) => state.users.current);
   const user = users.find(({ id }) => id === post.authorId);
@@ -29,6 +32,14 @@ export const Post: FC<IPostProps> = ({ post }) => {
 
   const handleDelete = () => {
     dispatch(removePost(post.id));
+  };
+
+  const handleEdit = () => {
+    if (addPostRef.current) {
+      addPostRef.current.setText(post.text); 
+      addPostRef.current.focusInput();
+      setEditPostId(post.id);
+    }
   };
 
   return (
@@ -53,7 +64,7 @@ export const Post: FC<IPostProps> = ({ post }) => {
       {openModal && (
         <div>
           <button onClick={handleDelete}>Удалить</button>
-          <button>Изменить</button>
+          <button onClick={handleEdit}>Изменить</button>
         </div>
       )}
     </li>
